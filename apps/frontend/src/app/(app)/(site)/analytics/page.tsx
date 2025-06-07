@@ -4,8 +4,8 @@ import { Metadata } from 'next';
 import { PlatformAnalytics } from '@gitroom/frontend/components/platform-analytics/platform.analytics';
 import { isGeneralServerSide } from '@gitroom/helpers/utils/is.general.server.side';
 export const metadata: Metadata = {
-  title: `${isGeneralServerSide() ? 'Postiz' : 'Gitroom'} Analytics`,
-  description: '',
+  title: 'FlowSupply Analytics',
+  description: 'Analytics and insights for your social media',
 };
 export default async function Index() {
   return (

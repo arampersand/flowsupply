@@ -1,0 +1,19 @@
+FROM node:20-alpine3.19 as builder
+RUN apk add --no-cache g++ make py3-pip
+RUN npm --no-update-notifier --no-fund --global install pnpm@10.6.1
+
+WORKDIR /app
+COPY package.json pnpm-lock.yaml ./
+COPY apps/frontend/package.json ./apps/frontend/
+COPY apps/backend/package.json ./apps/backend/
+
+RUN pnpm install
+COPY . .
+RUN pnpm run build
+
+FROM node:20-alpine3.19
+WORKDIR /app
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/node_modules ./node_modules
+
+CMD ["pnpm", "start"]

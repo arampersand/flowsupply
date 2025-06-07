@@ -1,4 +1,14 @@
 import interClass from '@gitroom/react/helpers/inter.font';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: {
+    default: 'FlowSupply',
+    template: '%s | FlowSupply'
+  },
+  description: 'FlowSupply - Your Social Media Management Platform',
+};
+
 export const dynamic = 'force-dynamic';
 import '../global.scss';
 import 'react-tooltip/dist/react-tooltip.css';

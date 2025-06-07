@@ -4,8 +4,8 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { isGeneralServerSide } from '@gitroom/helpers/utils/is.general.server.side';
 export const metadata: Metadata = {
-  title: `${isGeneralServerSide() ? 'Postiz' : 'Gitroom'} Marketplace`,
-  description: '',
+  title: 'Marketplace | FlowSupply',
+  description: 'Discover and share social media content',
 };
 export default async function Index({
   searchParams,
