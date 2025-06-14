@@ -279,7 +279,45 @@
   },
   "pnpm": {
     "onlyBuiltDependencies": [
-      "bcrypt"
+      "@nestjs/core",
+      "@openapitools/openapi-generator-cli",
+      "@prisma/client",
+      "@prisma/engines",
+      "@scarf/scarf",
+      "@swc/core",
+      "@tailwindcss/oxide",
+      "bcrypt",
+      "bufferutil",
+      "canvas",
+      "core-js",
+      "core-js-pure",
+      "esbuild",
+      "msgpackr-extract",
+      "nx",
+      "prisma",
+      "sharp",
+      "unrs-resolver",
+      "utf-8-validate"
+    ],
+    "ignoredBuiltDependencies": [
+      "@nestjs/core",
+      "@openapitools/openapi-generator-cli",
+      "@prisma/client",
+      "@prisma/engines",
+      "@scarf/scarf",
+      "@swc/core",
+      "@tailwindcss/oxide",
+      "bufferutil",
+      "canvas",
+      "core-js",
+      "core-js-pure",
+      "esbuild",
+      "msgpackr-extract",
+      "nx",
+      "prisma",
+      "sharp",
+      "unrs-resolver",
+      "utf-8-validate"
     ]
   }
 }

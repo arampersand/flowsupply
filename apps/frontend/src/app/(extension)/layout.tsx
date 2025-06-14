@@ -11,11 +11,30 @@ import clsx from 'clsx';
 import { VariableContextComponent } from '@gitroom/react/helpers/variable.context';
 import { Fragment } from 'react';
 import UtmSaver from '@gitroom/helpers/utils/utm.saver';
+import { headers } from 'next/headers';
+import { PHProvider } from '@gitroom/react/helpers/posthog';
+// import { ToltScript } from '@gitroom/react/components/tolt.script';
+// import { FacebookComponent } from '@gitroom/react/components/facebook.component';
 const chakra = Chakra_Petch({
   weight: '400',
   subsets: ['latin'],
 });
 export default async function AppLayout({ children }: { children: ReactNode }) {
+  const allHeaders = headers();
+  
+  // Envolver el contenido basado en si Plausible debe estar activo
+  const content = (
+    <PHProvider
+      phkey={process.env.NEXT_PUBLIC_POSTHOG_KEY}
+      host={process.env.NEXT_PUBLIC_POSTHOG_HOST}
+    >
+      <LayoutContext>
+        <UtmSaver />
+        {children}
+      </LayoutContext>
+    </PHProvider>
+  );
+
   return (
     <html className={interClass}>
       <head>
@@ -44,10 +63,15 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
           isSecured={!process.env.NOT_SECURED}
           disableImageCompression={!!process.env.DISABLE_IMAGE_COMPRESSION}
         >
-          <LayoutContext>
-            <UtmSaver />
-            {children}
-          </LayoutContext>
+          {/* <ToltScript /> */}
+          {/* <FacebookComponent /> */}
+          {!!process.env.STRIPE_PUBLISHABLE_KEY ? (
+            <PlausibleProvider domain={!!process.env.IS_GENERAL ? 'postiz.com' : 'gitroom.com'}>
+              {content}
+            </PlausibleProvider>
+          ) : (
+            content
+          )}
         </VariableContextComponent>
       </body>
     </html>

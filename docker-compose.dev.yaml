@@ -6,7 +6,7 @@ services:
     container_name: postiz
     restart: always
     environment:
-      NODE_ENV: "development"
+      NODE_OPTIONS: "--max-old-space-size=8192"  # Aumentar a 8GB
       MAIN_URL: "http://localhost:4200"
       #MAIN_URL: "http://flowsupply.me"
       FRONTEND_URL: "http://localhost:4200"
@@ -28,8 +28,6 @@ services:
 ***REMOVED***
 ***REMOVED***
 ***REMOVED***
-***REMOVED***
-      
       
       #mastodon.social
       #MASTODON_CLIENT_ID: "DQ0PiPVT4bp1c950Y5_pF1ATvVzKaQ4Dvx-0_deneeg"
